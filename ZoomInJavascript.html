@@ -1,0 +1,59 @@
+<html>
+
+<head>
+
+    <script>
+
+        var width = 100;
+        var height = 100;
+        var difference = 2;
+        var interveralID = 0;
+
+        function increase() {
+            clearInterval(interveralID);
+            interveralID = setInterval(expand, 10);
+        }
+        function decrease() {
+            clearInterval(interveralID);
+            interveralID = setInterval(shrink, 10);
+        }
+        function expand() {
+            if (width < 200 && height < 200) {
+                width = width + difference;
+                height = height + difference;
+
+                document.getElementById("img1").style.width = width;
+                document.getElementById("img1").style.height = height;
+                document.getElementById("img1").style.borderLeft = "#FF4500 solid";
+
+                console.log(width);
+            }
+            else {
+                clearInterval(interveralID);
+            }
+
+        }
+        function shrink() {
+            if (width > 100 && height > 100) {
+                width = width - difference;
+                height = height - difference;
+
+                document.getElementById("img1").style.width = width;
+                document.getElementById("img1").style.height = height;
+                document.getElementById("img1").style.borderLeft = "none";
+
+                console.log(width);
+            }
+            else {
+                clearInterval(interveralID);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <img onmouseover="increase()" onmouseout="decrease()" id="img1" src="new.jpg" width="100" height="100" />
+</body>
+
+</html>
